@@ -1,5 +1,6 @@
 ﻿using Mirror;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameNetworkManager : NetworkManager
 {
+    [SerializeField] private int minPlayers = 2; 
     [Scene] [SerializeField] private string menuScene = string.Empty;
 
     [Header("Room")]
@@ -14,6 +16,9 @@ public class GameNetworkManager : NetworkManager
 
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
+    
+    
+    public List<NetworkRoomPlayer> RoomPlayers { get; } = new List<NetworkRoomPlayer>();
 
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
 
@@ -60,10 +65,50 @@ public class GameNetworkManager : NetworkManager
     {
         if(SceneManager.GetActiveScene().path == menuScene)
         {
+            bool isLeader = RoomPlayers.Count == 0;
+
             NetworkRoomPlayer roomPlayerInstance = Instantiate(roomPlayerPrefab);
+
+            roomPlayerInstance.IsLeader = isLeader;
 
             NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
         }
+    }
+
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        if(conn.identity != null)
+        {
+            var player = conn.identity.GetComponent<NetworkRoomPlayer>();
+
+            RoomPlayers.Remove(player);
+
+            NotifyPlayersOfReadyState();
+        }
+
+        base.OnServerDisconnect(conn);
+    }
+
+    public override void OnStopServer()
+    {
+        RoomPlayers.Clear();
+    }
+
+    public void NotifyPlayersOfReadyState()
+    {
+        foreach (var player in RoomPlayers)
+            player.HandleReadyToStart(IsReadyToStart());
+    }
+
+    private bool IsReadyToStart()
+    {
+        if (numPlayers < minPlayers) { return false; }
+
+        foreach (var player in RoomPlayers)
+            if (!player.IsReady)
+                return false;
+
+        return true;
     }
 }
 
