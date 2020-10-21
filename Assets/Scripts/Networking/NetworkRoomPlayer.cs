@@ -49,8 +49,7 @@ public class NetworkRoomPlayer : NetworkBehaviour
         CmdSetDisplayName(PlayerNameInput.DisplayName);
 
         lobbyUI.SetActive(true);
-
-        UnityEngine.Debug.Log("Something here");
+        
     }
 
     public override void OnStartClient()
