@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ namespace Mirror.Examples.MultipleAdditiveScenes
     {
         public CharacterController characterController;
         public CapsuleCollider capsuleCollider;
+        
 
         void OnValidate()
         {
@@ -23,6 +25,7 @@ namespace Mirror.Examples.MultipleAdditiveScenes
         void Start()
         {
             capsuleCollider.enabled = isServer;
+            
         }
 
         public override void OnStartLocalPlayer()
@@ -63,6 +66,7 @@ namespace Mirror.Examples.MultipleAdditiveScenes
 
         void Update()
         {
+            
             if (!isLocalPlayer || !characterController.enabled)
                 return;
 
