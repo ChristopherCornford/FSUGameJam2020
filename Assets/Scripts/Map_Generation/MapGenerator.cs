@@ -26,14 +26,9 @@ public class MapGenerator : MonoBehaviour
     [Space]
     [SerializeField] Color32 color3 = new Color32(0, 0, 0, 0);
     [SerializeField] GameObject object3 = null;
-    [Space]
-    [SerializeField] Color32 color4 = new Color32(0, 0, 0, 0);
-    [SerializeField] GameObject object4 = null;
-
     [SerializeField] Material testMaterial = null;
 
     List<GameObject> myChildren = new List<GameObject>();
-
 
     private void Update()
     {
@@ -111,13 +106,6 @@ public class MapGenerator : MonoBehaviour
                     newBlock.transform.parent = newChild.transform;
                     newBlocks[y] = newBlock;
                 }
-                else if (Color.Equals(pixelColor, color4))
-                {
-                    GameObject newBlock = Instantiate(object4, new Vector3(x, 0, y), Quaternion.identity);
-                    newBlock.transform.parent = newChild.transform;
-                    newBlocks[y] = newBlock;
-                }
-                yield return new WaitForEndOfFrame();
             }
 
             if(newBlocks[0] != null)
@@ -127,6 +115,9 @@ public class MapGenerator : MonoBehaviour
             {
                 o.SetActive(false);
             }
+
+
+            yield return new WaitForEndOfFrame();
         }
     }
     

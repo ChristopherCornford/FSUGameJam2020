@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2e0952b7d781248b39c27864a9180a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapImage: {fileID: 2800000, guid: 991c353a9ea0bbc43b175865f0b95c09, type: 3}
-  mapHeight: 32
-  mapWidth: 32
+  mapImage: {fileID: 2800000, guid: 3072bda21e74a4d4d915a6ac44b702ab, type: 3}
+  mapHeight: 64
+  mapWidth: 64
   color1:
     serializedVersion: 2
     rgba: 4294967295
@@ -164,12 +164,8 @@ MonoBehaviour:
   object2: {fileID: 7876405547238896196, guid: d2d32f868d2fdb340b4276c6f145255c, type: 3}
   color3:
     serializedVersion: 2
-    rgba: 4278190335
-  object3: {fileID: 7876405547238896196, guid: 031102ed764db2e4092eeebf5c6bedab, type: 3}
-  color4:
-    serializedVersion: 2
     rgba: 4294901760
-  object4: {fileID: 7876405547238896196, guid: 9d3e6d19ae548dd47b929372ae0c914c, type: 3}
+  object3: {fileID: 7876405547238896196, guid: 9d3e6d19ae548dd47b929372ae0c914c, type: 3}
   testMaterial: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &450181663
 Transform:
