@@ -13,7 +13,8 @@ public class Waypoint : MonoBehaviour
     
     public void OnValidate()
     {
-        this.transform.tag = "Waypoint";
+        if(this.transform.tag != "Waypoint")
+            this.transform.tag = "Waypoint";
 
         GameObject[] allWaypoints = GameObject.FindGameObjectsWithTag("Waypoint");
 
