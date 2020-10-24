@@ -151,7 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2e0952b7d781248b39c27864a9180a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapImage: {fileID: 2800000, guid: 3072bda21e74a4d4d915a6ac44b702ab, type: 3}
+  mapImage: {fileID: 2800000, guid: beed2d03b5bf77e4da1ff963915eb0ca, type: 3}
+  SaveMapAsAsset: 0
+  SaveLocationPath: Assets/Resources/GeneratedMaps/
   mapHeight: 64
   mapWidth: 64
   color1:
@@ -161,7 +163,7 @@ MonoBehaviour:
   color2:
     serializedVersion: 2
     rgba: 4278190080
-  object2: {fileID: 7876405547238896196, guid: d2d32f868d2fdb340b4276c6f145255c, type: 3}
+  object2: {fileID: 9053537027956833985, guid: 4e1159816cae8f04eb2ad4bf8bc1f91c, type: 3}
   color3:
     serializedVersion: 2
     rgba: 4294901760

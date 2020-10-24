@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -10,6 +11,11 @@ public class MapGenerator : MonoBehaviour
 
     [Header("Input Settings")]
     [SerializeField] private Texture2D mapImage = null;
+    [Space]
+
+    [Header("Output Settings")]
+    [SerializeField] bool SaveMapAsAsset = true;
+    [SerializeField] string SaveLocationPath;
     [Space]
 
     [Header("Image Dimensions")]
@@ -74,6 +80,15 @@ public class MapGenerator : MonoBehaviour
 
     IEnumerator CreateNewMap()
     {
+        string newFolderPath = string.Empty;
+
+        if(SaveMapAsAsset)
+        {
+            string newFolder = AssetDatabase.CreateFolder("Assets", MapImage.name);
+
+            newFolderPath = AssetDatabase.GUIDToAssetPath(newFolder);
+        }
+
         int xVal = mapWidth;
         int yVal = mapHeight;
 
@@ -81,6 +96,8 @@ public class MapGenerator : MonoBehaviour
         {
             GameObject newChild = new GameObject("Child " + x.ToString(), typeof(MeshFilter), typeof(MeshRenderer));
             newChild.transform.parent = transform;
+
+            myChildren.Add(newChild);
 
             GameObject[] newBlocks = new GameObject[yVal];
 
@@ -116,8 +133,19 @@ public class MapGenerator : MonoBehaviour
                 o.SetActive(false);
             }
 
+            if(SaveMapAsAsset)
+            {
+                AssetDatabase.CreateAsset(newChild.GetComponent<MeshFilter>().sharedMesh, newFolderPath + "/" + x.ToString()+".asset");
+            }
 
             yield return new WaitForEndOfFrame();
+        }
+
+        if (SaveMapAsAsset)
+        {
+            this.gameObject.name = mapImage.name + "_Map";
+
+            PrefabUtility.SaveAsPrefabAsset(this.gameObject, SaveLocationPath + this.gameObject.name + ".prefab");
         }
     }
     
