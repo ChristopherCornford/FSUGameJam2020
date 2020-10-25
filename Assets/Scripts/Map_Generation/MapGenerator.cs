@@ -80,6 +80,8 @@ public class MapGenerator : MonoBehaviour
 
     IEnumerator CreateNewMap()
     {
+        Time.timeScale = 0.5f;
+
         string newFolderPath = string.Empty;
 
         if(SaveMapAsAsset)
@@ -138,7 +140,7 @@ public class MapGenerator : MonoBehaviour
                 AssetDatabase.CreateAsset(newChild.GetComponent<MeshFilter>().sharedMesh, newFolderPath + "/" + x.ToString()+".asset");
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
 
         if (SaveMapAsAsset)
@@ -147,6 +149,8 @@ public class MapGenerator : MonoBehaviour
 
             PrefabUtility.SaveAsPrefabAsset(this.gameObject, SaveLocationPath + this.gameObject.name + ".prefab");
         }
+
+        Time.timeScale = 1;
     }
     
     public Mesh MergeObjectsAndMaterials(GameObject[] objs, GameObject parentObj)

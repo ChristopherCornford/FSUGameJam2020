@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     public static GameManager Instance { get { return instance; } }
-
+    
     [Header("AI Management")]
     public bool isAINavigating = false;
 
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        
     }
 
 

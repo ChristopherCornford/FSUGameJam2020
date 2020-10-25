@@ -12,6 +12,7 @@ public class WaypointNavagation : MonoBehaviour
     delegate void Job(Waypoint currentWaypoint);
 
     private Job myJob;
+
     public NavMeshAgent navAgent { get { return this.GetComponent<NavMeshAgent>(); } }
 
     [Header("AI Behaviour Information")]
@@ -41,23 +42,22 @@ public class WaypointNavagation : MonoBehaviour
         {
             MyTask = myTask;
             
-            switch((int)MyTask)
+            switch(MyTask)
             {
-                case 0:
+                case Task.None:
                     myJob = null;
                     Debug.LogWarning(navAgent.name + " is not assigned a task!");
                     break;
 
-                case 1:
+                case Task.Explore:
                     myJob = Explore;
-
                     break;
 
-                case 2:
+                case Task.Patrol:
                     myJob = Patrol;
                     break;
 
-                case 3:
+                case Task.Guard:
                     myJob = Guard;
                     break;
                     
@@ -145,10 +145,10 @@ public class WaypointNavagation : MonoBehaviour
                 reachedDestination = true;
             else
             {
-               // Do Something if need be
+                // Do Something if need be
             }
-                yield return new WaitForEndOfFrame();
 
+            yield return new WaitForEndOfFrame();
         }
         while (!reachedDestination);
 
