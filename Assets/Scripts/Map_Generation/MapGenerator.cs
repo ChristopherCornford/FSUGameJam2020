@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 
 [RequireComponent(typeof(MeshFilter))]
@@ -12,6 +13,8 @@ public class MapGenerator : MonoBehaviour
     [Header("Input Settings")]
     [SerializeField] private Texture2D mapImage = null;
     [Space]
+    private RawImage mapUIImage = null;
+    
 
     [Header("Output Settings")]
     [SerializeField] bool SaveMapAsAsset = true;
@@ -36,21 +39,13 @@ public class MapGenerator : MonoBehaviour
 
     List<GameObject> myChildren = new List<GameObject>();
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ClearCurrentMap();
-        }
-       
-        if( Input.GetKeyDown(KeyCode.D))
-        {
-            StartCoroutine(CreateNewMap());
-        }
-    }
+    private void Start() => StartCoroutine(CreateNewMap());
+
 
     private void OnValidate()
     {
+        if (!mapUIImage) { mapUIImage = GameObject.FindObjectOfType(typeof(RawImage)) as RawImage; }
+
         if (mapImage == MapImage)
         {
             return;
@@ -63,18 +58,9 @@ public class MapGenerator : MonoBehaviour
 
                 mapHeight = mapImage.height;
                 mapWidth = mapImage.width;
+
+                mapUIImage.texture = mapImage;
             }
-        }
-    }
-
-    private void ClearCurrentMap()
-    {
-        int num = myChildren.Count;
-
-        for (int i = 0; i < num; i++)
-        {
-            DestroyImmediate(myChildren[0]);
-            myChildren.RemoveAt(0);
         }
     }
 
