@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 8beda86d2d4d630438d5ca657329dd13
+guid: 8f3e5b44ef0367b48a20e347849f5bff
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: KnightWalk
+    second: MageWalk
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: KnightWalk
+      name: MageWalk
       takeName: Take 001
       internalID: 0
-      firstFrame: 140
-      lastFrame: 190
+      firstFrame: 280
+      lastFrame: 420
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

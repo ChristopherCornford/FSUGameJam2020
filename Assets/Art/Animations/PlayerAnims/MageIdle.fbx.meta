@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 8beda86d2d4d630438d5ca657329dd13
+guid: c3fca9e3264bc8942801ebca42020b28
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: KnightWalk
+    second: MageIdle
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: KnightWalk
+      name: MageIdle
       takeName: Take 001
       internalID: 0
-      firstFrame: 140
-      lastFrame: 190
+      firstFrame: 1
+      lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
