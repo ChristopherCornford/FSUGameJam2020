@@ -175,7 +175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: beed2d03b5bf77e4da1ff963915eb0ca, type: 3}
+  m_Texture: {fileID: 2800000, guid: bba5ca500ce0045f78302ed199494f8a, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -221,19 +221,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2e0952b7d781248b39c27864a9180a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapImage: {fileID: 2800000, guid: beed2d03b5bf77e4da1ff963915eb0ca, type: 3}
-  SaveMapAsAsset: 0
+  mapImage: {fileID: 2800000, guid: bba5ca500ce0045f78302ed199494f8a, type: 3}
+  SaveMapAsAsset: 1
   SaveLocationPath: Assets/Resources/GeneratedMaps/
   mapHeight: 64
   mapWidth: 64
   color1:
     serializedVersion: 2
     rgba: 4278190080
-  object1: {fileID: 7876405547238896196, guid: d2d32f868d2fdb340b4276c6f145255c, type: 3}
+  object1: {fileID: 7876405547238896196, guid: e5a918d13501803488686a1f07c651d7, type: 3}
   color2:
     serializedVersion: 2
     rgba: 4294967295
-  object2: {fileID: 7876405547238896196, guid: e5a918d13501803488686a1f07c651d7, type: 3}
+  object2: {fileID: 7876405547238896196, guid: d2d32f868d2fdb340b4276c6f145255c, type: 3}
   color3:
     serializedVersion: 2
     rgba: 4284310121
