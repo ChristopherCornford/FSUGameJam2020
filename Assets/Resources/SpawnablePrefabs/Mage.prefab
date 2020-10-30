@@ -39,8 +39,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1436278588359508878}
+  - component: {fileID: -4090873820701836563}
   - component: {fileID: 9035535892567011060}
   - component: {fileID: 507916849318464898}
+  - component: {fileID: 6600562323045508118}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -64,6 +66,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4090873820701836563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717348554036081053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cf2e46d2b65d64d9ddf4a9e569a9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  DisplayName: Loading...
 --- !u!95 &9035535892567011060
 Animator:
   serializedVersion: 3
@@ -97,6 +114,22 @@ CapsuleCollider:
   m_Height: 181.93274
   m_Direction: 1
   m_Center: {x: 0, y: 143.41502, z: -0.9033203}
+--- !u!114 &6600562323045508118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717348554036081053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &3409105649704572323
 GameObject:
   m_ObjectHideFlags: 0

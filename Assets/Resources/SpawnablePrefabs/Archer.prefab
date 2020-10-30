@@ -332,8 +332,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8034563615457102288}
+  - component: {fileID: -7176807151239554122}
   - component: {fileID: 75016155391976618}
   - component: {fileID: 7933916018645503973}
+  - component: {fileID: -1912932372183848811}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -357,6 +359,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7176807151239554122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475007290009172931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cf2e46d2b65d64d9ddf4a9e569a9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  DisplayName: Loading...
 --- !u!95 &75016155391976618
 Animator:
   serializedVersion: 3
@@ -390,6 +407,22 @@ CapsuleCollider:
   m_Height: 277.43524
   m_Direction: 1
   m_Center: {x: 2.7534485, y: 150.65529, z: -3.3182144}
+--- !u!114 &-1912932372183848811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475007290009172931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &6965521944441200119
 GameObject:
   m_ObjectHideFlags: 0

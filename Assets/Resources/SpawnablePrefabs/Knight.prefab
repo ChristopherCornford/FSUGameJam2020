@@ -234,8 +234,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6257992966782397163}
+  - component: {fileID: 1705434308374467946}
   - component: {fileID: 4058544480777766801}
   - component: {fileID: 3127157945353538314}
+  - component: {fileID: 3247849631625882736}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -259,6 +261,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1705434308374467946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954545918400256248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cf2e46d2b65d64d9ddf4a9e569a9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  DisplayName: Loading...
 --- !u!95 &4058544480777766801
 Animator:
   serializedVersion: 3
@@ -292,6 +309,22 @@ CapsuleCollider:
   m_Height: 204.03748
   m_Direction: 1
   m_Center: {x: -0.97271204, y: 92.08327, z: -1.3637543}
+--- !u!114 &3247849631625882736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954545918400256248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &7448074031734105983
 GameObject:
   m_ObjectHideFlags: 0

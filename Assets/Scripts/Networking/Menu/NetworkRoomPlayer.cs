@@ -13,6 +13,8 @@ public class NetworkRoomPlayer : NetworkBehaviour
     [SerializeField] private TMP_Text[] playerNameTexts = new TMP_Text[4];
     [SerializeField] private TMP_Text[] playerReadyTexts = new TMP_Text[4];
 
+    [SerializeField] private TMP_Dropdown rpgClassSelector;
+
     [SerializeField] private Button startGameButton = null;
 
     [SyncVar(hook = nameof(HandleDisplayNameChanged))]
@@ -20,6 +22,9 @@ public class NetworkRoomPlayer : NetworkBehaviour
 
     [SyncVar(hook = nameof(HandleReadyStatusChanged))]
     public bool IsReady = false;
+
+    [SyncVar(hook = nameof(HandleRPGClassChanged))]
+    public RPG_Class myRPGClass;
 
     private bool isLeader;
 
@@ -70,6 +75,8 @@ public class NetworkRoomPlayer : NetworkBehaviour
 
     public void HandleReadyStatusChanged(bool oldValue, bool newValue) => UpdateDisplay();
 
+    public void HandleRPGClassChanged(RPG_Class oldValue, RPG_Class newValue) { }
+
     private void UpdateDisplay()
     {
         if(!isLocalPlayer)
@@ -109,6 +116,7 @@ public class NetworkRoomPlayer : NetworkBehaviour
         startGameButton.interactable = readyToStart;
     }
 
+   
     [Command]
     private void CmdSetDisplayName(string displayName)
     {
@@ -124,11 +132,26 @@ public class NetworkRoomPlayer : NetworkBehaviour
     }
 
     [Command]
+    public void CmdSelectRPGClass()
+    {
+        myRPGClass = (RPG_Class)rpgClassSelector.value;
+
+        IsReady = false;
+
+        Room.NotifyPlayersOfReadyState();
+
+        Destroy(GameObject.Find("Dropdown List").gameObject);
+
+        lobbyUI.SetActive(false);
+        lobbyUI.SetActive(true);
+    }
+
+    [Command]
     public void CmdStartGame()
     {
         if(Room.RoomPlayers[0].connectionToClient != connectionToClient) { return; }
 
-        //Start Game Here!
+        Room.StartGame();
     }
 
 }

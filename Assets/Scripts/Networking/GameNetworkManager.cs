@@ -14,11 +14,16 @@ public class GameNetworkManager : NetworkManager
     [Header("Room")]
     [SerializeField] private NetworkRoomPlayer roomPlayerPrefab = null;
 
+    [Header("Game")]
+    [SerializeField] private Player[] playerPrefabs;
+
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
+    public static event Action<NetworkConnection> OnServerReadied;
     
     
     public List<NetworkRoomPlayer> RoomPlayers { get; } = new List<NetworkRoomPlayer>();
+    public List<Player> GamePlayers { get; } = new List<Player>();
 
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
 
@@ -110,6 +115,54 @@ public class GameNetworkManager : NetworkManager
 
         return true;
     }
+
+    public void StartGame()
+    {
+        if(SceneManager.GetActiveScene().path == menuScene)
+        {
+            if (!IsReadyToStart()) { return; }
+
+            ServerChangeScene("MainScene");
+        }
+    }
+
+    public override void OnServerChangeScene(string newSceneName)
+    {
+        if (SceneManager.GetActiveScene().path == menuScene)
+        {
+            for (int i = RoomPlayers.Count - 1; i >= 0; i--)
+            {
+                var conn = RoomPlayers[i].connectionToClient;
+                
+                var gameplayerInstance = Instantiate(playerPrefabs[(int)RoomPlayers[i].myRPGClass]);
+                
+                gameplayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
+
+                NetworkServer.Destroy(conn.identity.gameObject);
+
+                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject, true);
+
+                DontDestroyOnLoad(gameplayerInstance);
+            }
+        }
+
+        base.OnServerChangeScene(newSceneName);
+    }
+
+    public override void OnServerReady(NetworkConnection conn)
+    {
+        base.OnServerReady(conn);
+
+        OnServerReadied?.Invoke(conn);
+    }
+}
+
+public enum RPG_Class
+{
+    Archer = 0,
+    Knight,
+    Mage,
+    Tank,
 }
 
 public static class IPManager
