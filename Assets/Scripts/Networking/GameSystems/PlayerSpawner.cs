@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerSpawner : NetworkBehaviour
 {
-    [SerializeField] private GameObject[] playerPrefabs;
+    [SerializeField] private Player playerPrefab;
 
     private static List<Transform> spawnLocations = new List<Transform>();
 
@@ -36,9 +36,10 @@ public class PlayerSpawner : NetworkBehaviour
             return;
         }
 
-        GameObject playerInstance = Instantiate(playerPrefabs[0], spawnLoc.position, spawnLoc.rotation);
+        var playerInstance = Instantiate(playerPrefab, spawnLoc.position, spawnLoc.rotation);
 
-        NetworkServer.AddPlayerForConnection(conn, playerInstance);
+        NetworkServer.ReplacePlayerForConnection(conn, playerInstance.gameObject, true);
+        
 
         nextIndex++;
     }

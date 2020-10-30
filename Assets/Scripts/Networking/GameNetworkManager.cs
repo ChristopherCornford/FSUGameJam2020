@@ -134,16 +134,8 @@ public class GameNetworkManager : NetworkManager
             for (int i = RoomPlayers.Count - 1; i >= 0; i--)
             {
                 var conn = RoomPlayers[i].connectionToClient;
-                
-                var gameplayerInstance = Instantiate(playerPrefabs[(int)RoomPlayers[i].myRPGClass]);
-                
-                gameplayerInstance.SetDisplayName(RoomPlayers[i].DisplayName);
-                
-                NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject, true);
 
                 NetworkServer.Destroy(conn.identity.gameObject);
-
-                DontDestroyOnLoad(gameplayerInstance);
             }
         }
 
@@ -152,8 +144,11 @@ public class GameNetworkManager : NetworkManager
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        GameObject playerSpawnerInstance = Instantiate(playerSpawner);
-        NetworkServer.Spawn(playerSpawnerInstance); 
+        if (sceneName.Contains("MainS"))
+        {
+            GameObject playerSpawnerInstance = Instantiate(playerSpawner);
+            NetworkServer.Spawn(playerSpawnerInstance);
+        }
     }
 
     public override void OnServerReady(NetworkConnection conn)
