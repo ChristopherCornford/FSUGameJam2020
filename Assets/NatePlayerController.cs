@@ -5,7 +5,7 @@ using UnityEngine;
 
 // Original Code written by Nathaniel Owens
 
-/*
+
 public class NatePlayerController : MonoBehaviour
 {
 	CharacterController Controller;
@@ -29,7 +29,7 @@ public class NatePlayerController : MonoBehaviour
 		float Vertical = Input.GetAxis("Vertical") * Speed * Time.deltaTime;
 
 		Vector3 Movement = Cam.transform.right * Horizontal + Cam.transform.forward * Vertical;
-		Movement.y = 0f;
+		Movement.y = 0.0f;
 
 		Controller.Move(Movement);
 		Quaternion CamRotation = Cam.rotation;
@@ -38,13 +38,14 @@ public class NatePlayerController : MonoBehaviour
 		transform.rotation = Quaternion.Lerp(transform.rotation, CamRotation, 0.1f);
 		if (Movement.magnitude != 0f)
 		{
-			transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Cam.GetComponent<MouseLook>().sensivity * Time.deltaTime);
+			transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Cam.GetComponent<MouseLook>().sensitivity * Time.deltaTime);
 
 		}
 	}
 }
-*/
 
+
+/*
 public class NatePlayerController : NetworkBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
@@ -104,3 +105,4 @@ public class NatePlayerController : NetworkBehaviour
         controller.Move(movement * movementSpeed * Time.deltaTime);
     }
 }
+*/

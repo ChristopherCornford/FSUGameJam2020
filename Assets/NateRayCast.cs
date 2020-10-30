@@ -19,7 +19,7 @@ public class NateRayCast : MonoBehaviour
         if (Physics.Raycast(Body.transform.position, Body.transform.forward, out hit, PickupRange))
         {
             //If the item hit by a raycast has the tag 'Item', it will update the text object with the current text and display said text.
-            if (hit.transform.tag == "Item")
+            if (hit.transform.CompareTag("Item"))
             {
                 pickUpText.SetText("Press 'E' to pick up " + hit.transform.name + ".");
                 pickUpText.enabled = true;
@@ -33,7 +33,6 @@ public class NateRayCast : MonoBehaviour
         {
             pickUpText.enabled = false;
         }
-            
-        }
+    }
 
 }

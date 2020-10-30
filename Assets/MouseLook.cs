@@ -3,13 +3,9 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
-public class MouseLook : MonoBehaviour
-{
 
-    * Original Code Written By:
-    *          Nathaniel Owens
-    *          
+public class MouseLook : MonoBehaviour
+{         
 
    public Transform lookAt;
 
@@ -18,14 +14,14 @@ public class MouseLook : MonoBehaviour
    public float distance = 10.0f;
    private float currentX = 0.0f;
    [SerializeField] float CamHeight = 15.0f;
-   public float sensivity = 4.0f;
+   public float sensitivity = 4.0f;
    [AddComponentMenu("CamHeight")]
    public class Height : MonoBehaviour
    {
    }
    void LateUpdate()
    {
-       currentX -= Input.GetAxis("Mouse X") * sensivity * Time.deltaTime;
+       currentX -= Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
 
 
        Vector3 Direction = new Vector3(0, 0, -distance);
@@ -41,10 +37,10 @@ public class MouseLook : MonoBehaviour
 
 
 }
-*/
+
 
 //The following code was written by Christopher Cornford out of necessity for network optimizing
-
+/*
 public class MouseLook : NetworkBehaviour
 {
     [Header("Camera")]
@@ -97,3 +93,4 @@ public class MouseLook : NetworkBehaviour
 
 
 }
+*/
