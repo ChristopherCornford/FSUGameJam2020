@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2717348554036081053}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -65.417114, y: 4.3960867, z: 122.51466}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 1755754018834625840}
@@ -81,6 +81,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   DisplayName: Loading...
+  rpgClass: 0
 --- !u!95 &9035535892567011060
 Animator:
   serializedVersion: 3

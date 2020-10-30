@@ -15,7 +15,8 @@ public class GameNetworkManager : NetworkManager
     [SerializeField] private NetworkRoomPlayer roomPlayerPrefab = null;
 
     [Header("Game")]
-    [SerializeField] private Player[] playerPrefabs;
+    [SerializeField] private Player[] playerPrefabs = null;
+    [SerializeField] private GameObject playerSpawner = null;
 
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
@@ -147,6 +148,12 @@ public class GameNetworkManager : NetworkManager
         }
 
         base.OnServerChangeScene(newSceneName);
+    }
+
+    public override void OnServerSceneChanged(string sceneName)
+    {
+       /* GameObject playerSpawnerInstance = Instantiate(playerSpawner);
+        NetworkServer.Spawn(playerSpawnerInstance); */
     }
 
     public override void OnServerReady(NetworkConnection conn)

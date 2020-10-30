@@ -59,7 +59,8 @@ public class MapGenerator : MonoBehaviour
                 mapHeight = mapImage.height;
                 mapWidth = mapImage.width;
 
-                mapUIImage.texture = mapImage;
+                if(mapUIImage)
+                    mapUIImage.texture = mapImage;
             }
         }
     }
@@ -132,7 +133,7 @@ public class MapGenerator : MonoBehaviour
         if (SaveMapAsAsset)
         {
             this.gameObject.name = mapImage.name + "_Map";
-
+            
             PrefabUtility.SaveAsPrefabAsset(this.gameObject, SaveLocationPath + this.gameObject.name + ".prefab");
         }
 

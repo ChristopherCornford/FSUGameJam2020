@@ -9,9 +9,12 @@ public class PlayerNameInput : MonoBehaviour
     [Header("UI")]
 
     [SerializeField] private TMP_InputField nameInputField = null;
+    [SerializeField] private TMP_Dropdown rpgClassSelector = null;
     [SerializeField] private Button continueButton = null;
 
     public static string DisplayName { get; private set; }
+
+    public static RPG_Class _RPG_Class { get; private set; }
 
     private const string PlayerPrefsNameKey = "PlayerName";
 
@@ -31,6 +34,11 @@ public class PlayerNameInput : MonoBehaviour
     public void SetPlayerName(string name)
     {
         continueButton.interactable = !string.IsNullOrEmpty(name);
+    }
+
+    public void SetRPGClass()
+    {
+        _RPG_Class = (RPG_Class)rpgClassSelector.value;
     }
 
     public void SavePlayerName()
